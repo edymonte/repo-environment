@@ -11,14 +11,14 @@ jobs:
     teste-fake:
         runs-on: ubuntu-latest
         environment: homologacao
-        needs: [deploy-fake-homologacao]
+        # needs: [deploy-fake-homologacao]
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
     QA:
         runs-on: ubuntu-latest
         environment: homologacao
-        needs: [teste-fake]
+        # needs: [teste-fake]
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
