@@ -4,26 +4,20 @@ on:
 jobs:
     deploy-fake-homologacao:
         runs-on: ubuntu-latest
-        environment:
-          name: hmologacao
-          url: "http://homologacao.edymonte.com.br"
+        environment: homologacao
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
     teste-fake:
         runs-on: ubuntu-latest
-        environment:
-          name: hmologacao
-          url: "http://homologacao.edymonte.com.br"
+        environment: homologacao
         needs: [deploy-fake-homologacao]
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
     QA:
         runs-on: ubuntu-latest
-        environment:
-          name: hmologacao
-          url: "http://homologacao.edymonte.com.br"
+        environment: homologacao
         needs: [teste-fake]
         steps:
             - name: Fake de deploy em ambiente
@@ -31,9 +25,7 @@ jobs:
     deploy-fake-producao:
         runs-on: ubuntu-latest
         needs: [QA]
-        environment:
-          name: producao
-          url: "http://producao.edymonte.com.br"
+        environment: producao
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
